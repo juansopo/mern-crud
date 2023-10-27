@@ -6,11 +6,11 @@ export const authRequired = (req, res, next) =>{
 
     if(!token) return res.status(401).json({message: "Sin autorizacion"})
 
-    jwt.verify(token, TOKEN_SECRET, (err, decoded) =>{
+    jwt.verify(token, TOKEN_SECRET, (err, user) =>{
         if(err) return res.status(403).json({message:"token invalido"})
 
-        req.user = decoded
-        console.log(decoded)
+        req.user = user
+        console.log(user)
         next();
     })
 
