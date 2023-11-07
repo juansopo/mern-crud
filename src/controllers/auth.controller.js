@@ -24,7 +24,7 @@ export const register = async (req, res) => {
             createdAt: userSaved.createdAt,
         })
     } catch (error) {
-        res.send(400).json({error: error})
+        res.status(400).json({error: error})
     }
 }
 export const login = async (req, res) => {

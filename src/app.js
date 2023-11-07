@@ -3,11 +3,13 @@ import morgan from 'morgan'
 import cookieParser from 'cookie-parser';
 import {router} from "./routes/auth.routes.js";
 import routerTask from "./routes/task.routes.js";
+import cors from 'cors';
 
 const app = express()
 app.use(morgan('dev'))
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors())
 
 app.use("/api",router);
 app.use("/api", routerTask);
