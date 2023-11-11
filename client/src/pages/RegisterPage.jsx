@@ -4,8 +4,8 @@ import { useAuth } from '../context/AuthContext.jsx';
 function RegisterPage() {
 
     const { register, handleSubmit } = useForm();
-    const {signup, user}= useAuth();
-    console.log(user);
+    const {signup}= useAuth();
+
 
     const onSubmit = handleSubmit(async (values) => {
         signup(values)
