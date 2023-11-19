@@ -5,9 +5,9 @@ import { registerRequest } from "../api/auth.js";
 export const AuthContext = createContext();
 
 // eslint-disable-next-line react-refresh/only-export-components
-export const useAuth = () =>{
+export const useAuth = () => {
   const context = useContext(AuthContext);
-  if(!context){
+  if (!context) {
     throw new Error("useAuth must be used within an AuthProvider")
   }
   return context;
@@ -19,10 +19,16 @@ export const useAuth = () =>{
 // eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const signup = async (user) => {
-    const res = await registerRequest(user);
-    setUser(res.data);
+    try {
+      const res = await registerRequest(user);
+      setUser(res.data);
+      setIsAuthenticated(true);
+    } catch (error) {
+      console.log(error);
+    }
   }
 
 
@@ -31,6 +37,7 @@ export const AuthProvider = ({ children }) => {
       value={{
         signup,
         user,
+        isAuthenticated,
       }}
     >
       {children}
