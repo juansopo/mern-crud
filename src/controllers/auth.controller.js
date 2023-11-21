@@ -8,7 +8,7 @@ export const register = async (req, res) => {
 
         const userFound = await User.findOne({email})
 
-        if(userFound) return res.status(400).json({message: ["The email already exists"]})
+        if(userFound) return res.status(400).json(["The email already exists"])
 
         const passHash = await bcrypt.hash(password, 10)
 
@@ -28,7 +28,7 @@ export const register = async (req, res) => {
             createdAt: userSaved.createdAt,
         })
     } catch (error) {
-        res.status(400).json({error: error.message})
+        res.status(400).json([error.message])
     }
 }
 export const login = async (req, res) => {
@@ -36,10 +36,10 @@ export const login = async (req, res) => {
 
     try {
         const userFound = await User.findOne({ email })
-        if (!userFound) return res.status(400).json({ message: "User not found" })
+        if (!userFound) return res.status(400).json(["User not found"])
 
         const isMatch = await bcrypt.compare(password, userFound.password)
-        if (!isMatch) return res.status(400).json({ message: "Contraseña incorrecta" })
+        if (!isMatch) return res.status(400).json(["Contraseña incorrecta"])
 
         const token = await createAccessToken({ id: userFound._id })
         res.cookie('token', token)
@@ -62,7 +62,7 @@ export const logout = (req, res) => {
 export const profile = async (req, res) => {
     const userFound = await User.findById(req.user.id)
 
-    if (!userFound) return res.status(400).json({ message: "user not found" })
+    if (!userFound) return res.status(400).json(["user not found"])
 
     return res.json({
         id: userFound._id,
