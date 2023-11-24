@@ -6,9 +6,13 @@ export const register = async (req, res) => {
 
     try {
 
-        const userFound = await User.findOne({email})
+        const userFoundEmail = await User.findOne({email})
 
-        if(userFound) return res.status(400).json(["The email already exists"])
+        if(userFoundEmail) return res.status(400).json(["The email already exists"])
+
+        const userFoundUsername = await User.findOne({username})
+
+        if(userFoundUsername) return res.status(400).json(["El usuario ya esta en uso"])
 
         const passHash = await bcrypt.hash(password, 10)
 

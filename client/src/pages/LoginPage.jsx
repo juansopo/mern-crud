@@ -1,17 +1,31 @@
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 import { useAuth } from '../context/AuthContext.jsx';
+import { Link, useNavigate } from "react-router-dom";
 function LoginPage() {
     const { register, handleSubmit, formState: {
         errors
     } } = useForm()
+    const navigate = useNavigate();
 
-    const {signin} = useAuth()
+    const { signin, isAuthenticated, error: signinError } = useAuth()
+
+    useEffect(() => {
+        if (isAuthenticated) navigate('/tasks')
+    }, [isAuthenticated])
 
     const onSubmit = handleSubmit(data => {
         signin(data);
     })
     return (
         <div className='bg-zinc-800 max-w-md p-10 rounded-md my-2 py-2 '>
+            {
+               signinError.map((error, i) => (
+                    <div className='flex justify-center items-center' key={i}>
+                        <p className='text-red-500 '>{error}</p>
+                    </div>
+                ))
+            }
             <h1 className='flex justify-center items-center font-bold'>LOGIN</h1>
             <form className='flex h-full items-center justify-center flex-col ' onSubmit={onSubmit}>
                 <div className="textInputWrapper">
@@ -34,6 +48,9 @@ function LoginPage() {
                     Register
                 </button>
             </form>
+            <p className="flex gap-x-2 justify-between">
+                ¿No tienes una cuenta?<Link to="/register" className="text-sky-500">Registrarse</Link>
+            </p>
         </div>
 
     )
