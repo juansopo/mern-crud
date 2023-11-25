@@ -30,7 +30,6 @@ function RegisterPage() {
                     </div>
                 ))
             }
-            <h1 className='flex justify-center items-center font-bold'>REGISTER</h1>
             <form className='flex h-full items-center justify-center flex-col ' onSubmit={onSubmit}>
                 <div className="textInputWrapper">
                     <input {...register('username', { required: true, minLength: 3 })} placeholder="Username" type="text" className="textInput" name='username' />
