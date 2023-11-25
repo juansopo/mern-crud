@@ -2,8 +2,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import HomePage from "./pages/HomePage.jsx";
-import TasksPage from "./pages/TasksPage.jsx";
-import TaskFormPage from "./pages/TaskFormPage.jsx";
+import SociosPage from "./pages/SociosPage.jsx";
+import SocioFormPage from "./pages/SocioFormPage.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
@@ -17,9 +17,9 @@ function App() {
           <Route path="/register" element={<RegisterPage />} />
 
           <Route element={<ProtectedRoute />}>
-            <Route path="/tasks" element={<TasksPage />} />
-            <Route path="/add-task" element={<TaskFormPage />} />
-            <Route path="/tasks/:id" element={<TaskFormPage />} />
+            <Route path="/socios" element={<SociosPage />} />
+            <Route path="/add-socio" element={<SocioFormPage />} />
+            <Route path="/socios/:id" element={<SocioFormPage />} />
             <Route path="/profile" element={<ProfilePage />} />
           </Route>
           
