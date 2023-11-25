@@ -1,12 +1,17 @@
 import { z } from "zod";
 
-export const createTaskSchema = z.object({
-  title: z.string({
-    required_error: "Title required",
+export const createSocioSchema = z.object({
+  nroorden: z.string({
+    required_error: "NroOrden requerido",
   }),
-  description: z
+  nombre: z.string({
+    required_error: "Nombre required",
+  }),
+  email: z
     .string({
-      required_error: "Description required",
+      required_error: "Email requerido",
+    })
+    .email({
+      message: "Email invalido",
     }),
-  date: z.string().datetime().optional(),
 });
