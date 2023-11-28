@@ -1,6 +1,8 @@
+
 function SociosPage(){
+    
     return(
-        <div>Socios Page</div>
+        <div>Todos los socios</div>
     )
 }
 

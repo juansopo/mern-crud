@@ -8,7 +8,7 @@ import {
   deleteSocio,
   createSocio,
 } from "../controllers/socio.controller.js";
-import { createSocioSchema } from "../schemas/task.schema.js";
+import { createSocioSchema } from "../schemas/socio.schema.js";
 const router = Router();
 
 router.get("/socios", authRequired, getSocios);
