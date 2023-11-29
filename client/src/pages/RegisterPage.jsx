@@ -15,7 +15,7 @@ function RegisterPage() {
     useEffect(() => {
         console.log('useEffect')
         if (isAuthenticated) navigate('/socios')
-    }, [isAuthenticated, navigate])
+    },[isAuthenticated, navigate])
 
 
     const onSubmit = handleSubmit(async (values) => {

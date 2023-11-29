@@ -7,9 +7,11 @@ import SocioFormPage from "./pages/SocioFormPage.jsx";
 import { AuthProvider } from "./context/AuthContext.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
+import { SocioProvider } from "./context/SocioContext.jsx";
 function App() {
   return (
     <AuthProvider>
+      <SocioProvider>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -25,6 +27,7 @@ function App() {
           
         </Routes>
       </BrowserRouter>
+      </SocioProvider>
     </AuthProvider>
   );
 }

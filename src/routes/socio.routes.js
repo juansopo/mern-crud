@@ -14,7 +14,7 @@ const router = Router();
 router.get("/socios", authRequired, getSocios);
 router.get("/socios/:id", authRequired, getSocio);
 router.post(
-  "/socio",
+  "/socios",
   authRequired,
   validatorSchema(createSocioSchema),
   createSocio

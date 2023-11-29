@@ -1,16 +1,22 @@
 import { useForm } from "react-hook-form";
 import { useAuth } from '../context/AuthContext.jsx';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 function LoginPage() {
     const { register, handleSubmit, formState: {
         errors
     } } = useForm()
-
-    const { signin, error: signinError } = useAuth()
+    const navigate = useNavigate()
+    const { signin, error: signinError, isAuthenticated } = useAuth()
 
     const onSubmit = handleSubmit(data => {
         signin(data);
+
     })
+    useEffect(() =>{
+        if(isAuthenticated) navigate ('/socios')
+    },[isAuthenticated])
+
     return (
         <div className='bg-zinc-800 max-w-md p-10 rounded-md my-2 py-2 '>
             {

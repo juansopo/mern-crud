@@ -3,6 +3,9 @@
   consider using classes instead of the `@apply` directive
   @see https://tailwindcss.com/docs/reusing-styles#avoiding-premature-abstraction
 */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 .textInputWrapper {
     @apply relative w-[180px] mx-[5px] my-3 before:transition-[border-bottom-color] before:duration-200 before:ease-in-out before:delay-[0ms] before:border-b-[rgba(0,0,0,0.42)] before:border-b before:border-solid focus-within:before:border-b-[color:var(--accent-color)] focus-within:before:border-b focus-within:before:border-solid before:transition-[border-bottom-color] before:duration-200 before:ease-in-out before:delay-[0ms] before:border-b-[rgba(0,0,0,0.42)] before:border-b before:border-solid focus-within:before:border-b-[color:var(--accent-color)] focus-within:before:border-b focus-within:before:border-solid focus-within:before:scale-x-100 focus-within:after:border-b-[color:var(--accent-color)] focus-within:after:border-b-2 focus-within:after:border-solid focus-within:after:scale-x-100 after:content-[""] after:transition-transform after:duration-[250ms] after:ease-out after:delay-[0ms] after:will-change-transform after:border-b-[color:var(--accent-color)] after:border-b-[color:var(--accent-color)] after:border-b-2 after:border-solid after:scale-x-0;
     --accent-color: #4299E1;
@@ -30,3 +33,4 @@
   .textInputWrapper:focus-within .textInput::placeholder {
     @apply opacity-0;
   }
+

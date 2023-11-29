@@ -80,7 +80,6 @@ export const profile = async (req, res) => {
   });
 };
 export const verify = async (req, res) => {
-
   const { token } = req.cookies;
 
   if (!token) {
