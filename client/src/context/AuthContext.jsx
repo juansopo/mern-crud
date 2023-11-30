@@ -24,6 +24,11 @@ export const AuthProvider = ({ children }) => {
   const [error, setError] = useState([]);
   const [loading, setLoading] = useState(true);
   
+  const logout = async () =>{
+    Cookie.remove('token');
+    setIsAuthenticated(false)
+    setUser(null)
+  }
 
   const signup = async (user) => {
     try {
@@ -100,6 +105,7 @@ export const AuthProvider = ({ children }) => {
         isAuthenticated,
         error,
         loading,
+        logout,
       }}
     >
       {children}

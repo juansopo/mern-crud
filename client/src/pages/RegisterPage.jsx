@@ -23,7 +23,7 @@ function RegisterPage() {
     })
 
     return (
-        <div className='bg-zinc-800 max-w-md p-10 rounded-md my-2 py-2 '>
+        <div className='bg-zinc-800 max-w-md p-10 rounded-md my-2 py-2 mx-auto'>
             {
                RegisterError.map((error, i) => (
                     <div className='flex justify-center items-center' key={i}>

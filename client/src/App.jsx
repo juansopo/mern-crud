@@ -8,25 +8,27 @@ import { AuthProvider } from "./context/AuthContext.jsx";
 import ProfilePage from "./pages/ProfilePage.jsx";
 import ProtectedRoute from "./ProtectedRoute.jsx";
 import { SocioProvider } from "./context/SocioContext.jsx";
+import Navbar from "./components/navbar.jsx";
 function App() {
   return (
     <AuthProvider>
       <SocioProvider>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+        <BrowserRouter>
+          <Navbar />
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
 
-          <Route element={<ProtectedRoute />}>
-            <Route path="/socios" element={<SociosPage />} />
-            <Route path="/add-socio" element={<SocioFormPage />} />
-            <Route path="/socios/:id" element={<SocioFormPage />} />
-            <Route path="/profile" element={<ProfilePage />} />
-          </Route>
-          
-        </Routes>
-      </BrowserRouter>
+              <Route element={<ProtectedRoute />}>
+                <Route path="/socios" element={<SociosPage />} />
+                <Route path="/add-socio" element={<SocioFormPage />} />
+                <Route path="/socios/:id" element={<SocioFormPage />} />
+                <Route path="/profile" element={<ProfilePage />} />
+              </Route>
+
+            </Routes>
+        </BrowserRouter>
       </SocioProvider>
     </AuthProvider>
   );
