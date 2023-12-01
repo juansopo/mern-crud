@@ -11,7 +11,7 @@ function SocioFormPage() {
         createSocio(socio)
     })
     return (
-        <div className='bg-zinc-800 max-w-md p-10 rounded-md my-2 py-2 '>
+        <div className='bg-zinc-800 max-w-md p-10 rounded-md my-2 py-2 mx-auto'>
             <form className='flex h-full items-center justify-center flex-col ' onSubmit={onSubmit}>
                 <div className="textInputWrapper">
                     <input {...register('nroorden', { required: true, minLength: 5 })} placeholder="Nro Orden" type="text" className="textInput" name='nroorden' />

@@ -41,6 +41,7 @@ export const SocioProvider = ({ children }) => {
   return (
     <SocioContext.Provider
       value={{
+        error,
         socios,
         createSocio,
         getAllSocios,

@@ -18,7 +18,7 @@ function Navbar() {
                             <Link to='/add-socio'>Agregar Socio</Link>
                         </li>
                         <li>
-                            <Link to='/' onClick={() => { logout() }}>Cerrar sesion</Link>
+                            <Link to='/login' onClick={() => { logout() }}>Cerrar sesion</Link>
                         </li>
                     </>
                 ) : (
