@@ -12,7 +12,7 @@ function Navbar() {
                 {isAuthenticated ? (
                     <>
                         <li>
-                            Bienvenido {user.nombre}
+                            Bienvenido {user.username}
                         </li>
                         <li>
                             <Link to='/add-socio'>Agregar Socio</Link>

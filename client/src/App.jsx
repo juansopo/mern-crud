@@ -11,10 +11,11 @@ import { SocioProvider } from "./context/SocioContext.jsx";
 import Navbar from "./components/navbar.jsx";
 function App() {
   return (
-    <AuthProvider>
-      <SocioProvider>
-        <BrowserRouter>
-          <Navbar />
+    <div className="font-roboto">
+      <AuthProvider>
+        <SocioProvider>
+          <BrowserRouter>
+            <Navbar />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />
@@ -28,9 +29,11 @@ function App() {
               </Route>
 
             </Routes>
-        </BrowserRouter>
-      </SocioProvider>
-    </AuthProvider>
+          </BrowserRouter>
+        </SocioProvider>
+      </AuthProvider>
+    </div>
+
   );
 }
 

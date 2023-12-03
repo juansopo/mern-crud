@@ -1,17 +1,27 @@
 import { useForm } from 'react-hook-form'
 import { useSocio } from '../context/SocioContext.jsx';
 import '../input.css';
+import {useNavigate} from 'react-router-dom'
 function SocioFormPage() {
     const{register, handleSubmit, formState:{
         errors,
     }} = useForm();
-    const {createSocio} = useSocio()
+    const {createSocio, error: SubmitError} = useSocio()
+    const navigate = useNavigate();
 
     const onSubmit = handleSubmit(async (socio) =>{
         createSocio(socio)
+        if(SubmitError.length == 0) navigate('/socios');
     })
     return (
         <div className='bg-zinc-800 max-w-md p-10 rounded-md my-2 py-2 mx-auto'>
+            {
+               SubmitError.map((error, i) => (
+                    <div className='flex justify-center items-center' key={i}>
+                        <p className='text-red-500 '>{error}</p>
+                    </div>
+                ))
+            }
             <form className='flex h-full items-center justify-center flex-col ' onSubmit={onSubmit}>
                 <div className="textInputWrapper">
                     <input {...register('nroorden', { required: true, minLength: 5 })} placeholder="Nro Orden" type="text" className="textInput" name='nroorden' />
