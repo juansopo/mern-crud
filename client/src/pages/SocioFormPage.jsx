@@ -6,11 +6,12 @@ function SocioFormPage() {
     const{register, handleSubmit, formState:{
         errors,
     }} = useForm();
-    const {createSocio, error: SubmitError} = useSocio()
+    const {createSocio, error: SubmitError, getAllSocios} = useSocio()
     const navigate = useNavigate();
 
     const onSubmit = handleSubmit(async (socio) =>{
         createSocio(socio)
+        getAllSocios()
         if(SubmitError.length == 0) navigate('/socios');
     })
     return (
