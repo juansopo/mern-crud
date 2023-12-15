@@ -75,7 +75,7 @@ export const LoginForm = ({register, onsubmit, errors, signinError}) => {
         <div className="flex-row">
           <div>
             <input type="checkbox" />
-            <label>Mantener sesion</label>
+            <label> Mantener sesion</label>
           </div>
           <span className="span">Olvidafter la contra bro?</span>
         </div>
