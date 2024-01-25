@@ -4,15 +4,16 @@ import { useEffect } from "react";
 //import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table'
 import MUIDataTable from 'mui-datatables'
 import "../input.css";
-
+import {createTheme, ThemeProvider} from "@mui/material"
 import { useSocio } from "../context/SocioContext";
 
+export const darkTheme = createTheme({
+    palette:{
+        mode: 'dark'
+    }
+})
 
-const columns = ["Nro Orden", "Nombre", "Email"]
-
-const options = { filterType: 'checkbox', }
-
-export const Tabla = () => {
+export const TableJson = () =>{
 
     const { getAllSocios, socios } = useSocio();
 
@@ -20,19 +21,38 @@ export const Tabla = () => {
         getAllSocios();
     }, []);
 
-    console.log(socios)
-    const data = socios.map(socio => 
-        [socio.nroorden, socio.nombre, socio.email])
+    const columns = [
+        {
+            name: "nroorden",
+            label: "Nro Orden"
+        },
+        {
+            name: "nombre",
+            label: "Nombre"
+        },
+        {
+            name: "email",
+            label: "Email"
+        }
+    ]
+    const options ={
+        responsive: 'standard',
+    }
 
-
-
-    return (<MUIDataTable
-        title={"Manuel Primo"}
-        columns={columns}
-        data={data}
-        options={options}
-    />)
+    return(
+        <ThemeProvider theme={darkTheme}>
+            <MUIDataTable
+            title={"SOCIOS"}
+            data={socios}
+            columns={columns}
+            options={options}
+            />
+        </ThemeProvider>
+        
+    )
 }
+
+
 
 function SociosPage() {
     const { getAllSocios, socios } = useSocio();
@@ -65,4 +85,3 @@ function SociosPage() {
     );
 }
 
-export default Tabla;
