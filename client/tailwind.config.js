@@ -3,7 +3,8 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-    "node_modules/flowbite-react/**/*.{js,ts,jsx,tsx}",
+    //Al cargar mal la siguiente linea se traba la carga de la pagina
+    'node_modules/flowbite-react/lib/esm/**/*.js',
   ],
   theme: {
     extend: {
@@ -13,5 +14,5 @@ export default {
     },
   },
   // eslint-disable-next-line no-undef
-  plugins: [require("flowbite/plugin")],
+plugins: [require("flowbite/plugin")],
 };
