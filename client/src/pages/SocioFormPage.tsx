@@ -1,5 +1,5 @@
 import { useForm } from 'react-hook-form'
-import { useSocio } from '../context/SocioContext.jsx';
+import { useSocio } from '../context/SocioContext';
 import '../input.css';
 import {useNavigate} from 'react-router-dom'
 function SocioFormPage() {

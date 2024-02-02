@@ -1,14 +1,14 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
-import HomePage from "./pages/HomePage.jsx";
-import { TableJson } from "./pages/SociosPage.jsx";
-import SocioFormPage from "./pages/SocioFormPage.jsx";
-import { AuthProvider } from "./context/AuthContext.jsx";
-import ProfilePage from "./pages/ProfilePage.jsx";
-import ProtectedRoute from "./ProtectedRoute.jsx";
-import { SocioProvider } from "./context/SocioContext.jsx";
-import { Sidebar } from './components/Sidebar/Sidebar.jsx';
+import HomePage from "./pages/HomePage";
+import { TableJson } from "./pages/SociosPage";
+import SocioFormPage from "./pages/SocioFormPage";
+import { AuthProvider } from "./context/AuthContext";
+import ProfilePage from "./pages/ProfilePage";
+import ProtectedRoute from "./ProtectedRoute";
+import { SocioProvider } from "./context/SocioContext";
+import { Sidebar } from "./components/Sidebar/Sidebar";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
       <AuthProvider>
         <SocioProvider>
           <BrowserRouter>
-            <Sidebar/>
+            <Sidebar />
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />

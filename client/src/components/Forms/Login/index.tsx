@@ -1,9 +1,10 @@
-/* eslint-disable react/prop-types */
 import { Link } from 'react-router-dom'
 
 import "./styles.css";
+import React, { ReactElement } from 'react';
+import { LoginFormProps } from './types';
 
-export const LoginForm = ({register, onsubmit, errors, signinError}) => {
+export const LoginForm: React.FC<LoginFormProps> = ({register, onsubmit, errors, signinError}): ReactElement => {
   return (
     <div className='justify-center py-4'>
       {signinError && signinError.map((error, i) => (

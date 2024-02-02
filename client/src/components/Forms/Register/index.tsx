@@ -1,17 +1,22 @@
-/* eslint-disable react/prop-types */
-import { useForm } from "react-hook-form";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { useAuth } from "../../../context/AuthContext";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 import "./styles.css";
 
-export const RegisterForm = () => {
+interface RegisterFormValues {
+  username: string;
+  email: string;
+  password: string;
+}
+
+export const RegisterForm: React.FC = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<RegisterFormValues>();
 
   const { signup, isAuthenticated, error: RegisterError } = useAuth();
   const navigate = useNavigate();
@@ -21,13 +26,13 @@ export const RegisterForm = () => {
     if (isAuthenticated) navigate("/socios");
   }, [isAuthenticated, navigate]);
 
-  const onSubmit = handleSubmit(async (values) => {
+  const onSubmit: SubmitHandler<RegisterFormValues> = async (values) => {
     signup(values);
-  });
+  };
 
   return (
     <div className="flex justify-center">
-      <form className="form" onSubmit={onSubmit}>
+      <form className="form" onSubmit={handleSubmit(onSubmit)}>
         {RegisterError.map((error, i) => (
           <div className="flex justify-center items-center" key={i}>
             <p className="text-red-500 ">{error}</p>
@@ -83,7 +88,7 @@ export const RegisterForm = () => {
         {errors.email && <p className="text-red-500">Email is required</p>}
 
         <div className="flex-column">
-          <label>Contrasena</label>
+          <label>Password</label>
         </div>
         <div className="inputForm">
           <svg
@@ -92,7 +97,7 @@ export const RegisterForm = () => {
             width="20"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <path d="m336 512h-288c-26.453125 0-48-21.523438-48-48v-224c0-26.476562 21.546875-48 48-48h288c26.453125 0 48 21.523438 48 48v224c0 26.476562-21.546875 48-48 48zm-288-288c-8.8125 0-16 7.167969-16 16v224c0 8.832031 7.1875 16 16 16h288c8.8125 0 16-7.167969 16-16v-224c0-8.832031-7.1875-16-16-16zm0 0"></path>
+            <path d="M336 512h-288c-26.453125 0-48-21.523438-48-48v-224c0-26.476562 21.546875-48 48-48h288c26.453125 0 48 21.523438 48 48v224c0 26.476562-21.546875 48-48 48zm-288-288c-8.8125 0-16 7.167969-16 16v224c0 8.832031 7.1875 16 16 16h288c8.8125 0 16-7.167969 16-16v-224c0-8.832031-7.1875-16-16-16zm0 0"></path>
             <path d="m304 224c-8.832031 0-16-7.167969-16-16v-80c0-52.929688-43.070312-96-96-96s-96 43.070312-96 96v80c0 8.832031-7.167969 16-16 16s-16-7.167969-16-16v-80c0-70.59375 57.40625-128 128-128s128 57.40625 128 128v80c0 8.832031-7.167969 16-16 16zm0 0"></path>
           </svg>
           <input
@@ -117,9 +122,9 @@ export const RegisterForm = () => {
               : "Password must be at least 6 characters"}
           </p>
         )}
-        <button className="button-submit">Iniciar Sesion</button>
+        <button className="button-submit">Sign Up</button>
         <p className="p">
-          Dont have an account?{" "}
+          Already have an account?{" "}
           <Link to="/login" className="span">
             Login
           </Link>
