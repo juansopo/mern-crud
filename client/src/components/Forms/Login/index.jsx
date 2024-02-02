@@ -5,7 +5,7 @@ import "./styles.css";
 
 export const LoginForm = ({register, onsubmit, errors, signinError}) => {
   return (
-    <div className='flex justify-center py-4'>
+    <div className='justify-center py-4'>
       {signinError && signinError.map((error, i) => (
         <div className="flex justify-center items-center" key={i}>
           <p className="text-red-500 ">{error}</p>
