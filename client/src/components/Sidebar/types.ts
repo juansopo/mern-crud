@@ -1,6 +1,16 @@
-import { ReactEventHandler } from "react";
+export interface Option {
+  title: string;
+  link: string;
+  icon?: React.ReactElement;
+}
 
-export interface SidebarProps {
-  isOpen?: boolean;
-  toggle?: ReactEventHandler;
+export interface SideBarButtonProps {
+  option: Option;
+  onClick?: React.MouseEventHandler<HTMLAnchorElement>;
+  active: string;
+  icon?: React.ReactElement;
+}
+
+export interface SideBarProps {
+  options: Option[];
 }

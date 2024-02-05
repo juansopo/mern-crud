@@ -20,7 +20,7 @@
     "noFallthroughCasesInSwitch": true
   },
   "exclude": ["worker", "cypress.config.ts"],
-  "include": ["src", "cypress", "global.d.ts", "custom.d.ts", "scripts/run_e2e.js"],
+  "include": ["src", "global.d.ts", "custom.d.ts"],
   "references": [
     {
       "path": "./tsconfig.node.json"

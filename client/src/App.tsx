@@ -8,7 +8,16 @@ import { AuthProvider } from "./context/AuthContext";
 import ProfilePage from "./pages/ProfilePage";
 import ProtectedRoute from "./ProtectedRoute";
 import { SocioProvider } from "./context/SocioContext";
-import { Sidebar } from "./components/Sidebar/Sidebar";
+import Sidebar from './components/Sidebar/Sidebar'
+import { Option } from './components/Sidebar/types'
+import { FaCog, FaEnvelope, FaHome, FaShoppingCart } from "react-icons/fa";
+
+const options: Option[] = [
+  { title: "Inicio", link: "/", icon: <FaHome /> },
+  { title: "Productos", link: "/products", icon: <FaShoppingCart /> },
+  { title: "Servicios", link: "/services", icon: <FaCog /> },
+  { title: "Contacto", link: "/contact", icon: <FaEnvelope /> },
+];
 
 function App() {
   return (
@@ -16,7 +25,7 @@ function App() {
       <AuthProvider>
         <SocioProvider>
           <BrowserRouter>
-            <Sidebar />
+            <Sidebar options={options}/>
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/login" element={<LoginPage />} />

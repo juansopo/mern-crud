@@ -1,52 +1,56 @@
-import React, { ReactElement } from "react";
-import "./sidebar.css";
+import React from "react";
 import { Link } from "react-router-dom";
-import { ReactComponent as RightToBracketSolid } from "../../assets/right-to-bracket-solid.svg";
-import { SidebarProps } from "./types";
+import {
+  FaRegUserCircle,
+} from "react-icons/fa";
+import { SideBarButtonProps, SideBarProps } from "./types";
 
-const ButtonSidebar = ({ logo, message, to = "" }) => {
+// los estilos en tailwind
+const sidebarStyle = "w-64 h-screen bg-[#1c1917] flex flex-col items-center";
+const logoStyle = "w-10 h-10 mt-4";
+const buttonStyle =
+  "flex w-48 h-10 mt-4 rounded-xl border border-transparent border-2 hover:border-2 hover:border-[#e11d48] text-lg items-center ";
+const activeStyle = "bg-[#e11d48]";
+
+function SideBarButton({
+  option,
+  onClick,
+  active,
+  icon,
+}: SideBarButtonProps): JSX.Element {
   return (
-    <Link to={to} className="my-1">
-      <button className="flex w-full items-center rounded-lg px-2 transition-all hover:bg-[#000000] py-1 item-center">
-        {logo && <span className="mx-2 w-4 h-4">{logo}</span>}
-        <h3 className="ml-1">{message}</h3>
-      </button>
+    <Link
+      to={option.link}
+      key={option.title}
+      className={`${buttonStyle} ${active === option.title ? activeStyle : ""}`}
+      onClick={onClick}
+    >
+      {icon && <span className="pl-2">{icon}</span>}
+      <h4 className="pl-2">{option.title}</h4>
     </Link>
   );
-};
+}
 
-export const Sidebar: React.FC<SidebarProps> = ({
-  isOpen = true,
-  toggle,
-}): ReactElement => {
+const SideBar: React.FC<SideBarProps> = ({ options }) => {
+  const [active, setActive] = React.useState<string>("");
+
+  const handleClick = (option: string) => {
+    setActive(option);
+  };
+
   return (
-    <div className={isOpen ? "sidebar open" : "sidebar"} onClick={toggle}>
-      <div className="bg-[#ff3b58] h-full min-w-80 flex flex-col font-roboto h-full w-full flex">
-        <h1 className="px-6 mb-10 pt-8 text-xl">Logo</h1>
-        <div className="flex flex-col px-6 text-lg font-semibold font-sans">
-          <ButtonSidebar
-            logo={
-              <img src={RightToBracketSolid} alt="Right to Bracket Solid" />
-            }
-            message="Inicio"
-            to="/login"
-          />
-          <ButtonSidebar
-            logo={
-              <img src={RightToBracketSolid} alt="Right to Bracket Solid" />
-            }
-            message="Sobre nosotros"
-            to="/login"
-          />
-          <ButtonSidebar
-            logo={
-              <img src={RightToBracketSolid} alt="Right to Bracket Solid" />
-            }
-            message="Contacto"
-            to="/login"
-          />
-        </div>
-      </div>
+    <div className={sidebarStyle}>
+      <FaRegUserCircle className={logoStyle} />
+      {options.map((option) => (
+        <SideBarButton
+          option={option}
+          onClick={() => handleClick(option.title)}
+          active={active}
+          icon={option.icon}
+        ></SideBarButton>
+      ))}
     </div>
   );
 };
+
+export default SideBar;
