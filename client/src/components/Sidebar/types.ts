@@ -1,6 +1,6 @@
 export interface Option {
   title: string;
-  link: string;
+  link?: string;
   icon?: React.ReactElement;
   subOptions?: Option[];
 }
@@ -8,8 +8,9 @@ export interface Option {
 export interface SideBarButtonProps {
   option: Option;
   onClick?: React.MouseEventHandler<HTMLAnchorElement>;
-  active: string;
+  isActive: boolean;
   icon?: React.ReactElement;
+  className?: string
 }
 
 export interface SideBarProps {

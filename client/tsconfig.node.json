@@ -10,7 +10,7 @@
         "./src/**/*.ts",
         "./src/**/*.d.ts",
         "vite.config.ts"
-    ],
+, "src/components/ProfileButton/index.tsx"    ],
     "exclude": [
         "node_modules"
     ]
