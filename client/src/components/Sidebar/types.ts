@@ -2,6 +2,7 @@ export interface Option {
   title: string;
   link: string;
   icon?: React.ReactElement;
+  subOptions?: Option[];
 }
 
 export interface SideBarButtonProps {
