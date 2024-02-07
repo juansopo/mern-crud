@@ -38,7 +38,6 @@ const options: Option[] = [
   },
   {
     title: "Nichos/Inhumados",
-    link: "/nichos-inhumados",
     icon: <FaArchive />,
     subOptions: [
       { title: "Nichos", link: "/nichos", icon: <FaArchive /> },
