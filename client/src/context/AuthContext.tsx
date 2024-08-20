@@ -6,7 +6,15 @@ interface User {
   // Define las propiedades del usuario según tu aplicación
   // Por ejemplo, podría ser { id: number; username: string; email: string; }
 }
-
+interface Error {
+  // Define las propiedades del usuario según tu aplicación
+  // Por ejemplo, podría ser { id: number; username: string; email: string; }
+  response: {
+    data: string[];
+    status: number;
+  }; 
+  code: number
+}
 interface AuthContextType {
   signup: (user: any) => Promise<void>;
   signin: (user: any) => Promise<void>;
@@ -43,24 +51,26 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }: AuthProv
     setUser(null);
   };
 
-  const signup = async (user: any) => {
+  const signup = async (user: User) => {
     try {
       const res = await registerRequest(user);
       setUser(res.data);
       setIsAuthenticated(true);
     } catch (error) {
-      console.log(error.response);
-      setError(error.response.data);
+      const err = error as Error
+      console.log(err.response);
+      setError(err.response.data);
     }
   };
 
-  const signin = async (user: any) => {
+  const signin = async (user: User) => {
     try {
       const res = await loginRequest(user);
       setUser(res.data);
       setIsAuthenticated(true);
     } catch (error) {
-      setError(error.response.data);
+      const err = error as Error
+      setError(err.response.data);
       console.log(error);
     }
   };
@@ -86,7 +96,7 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }: AuthProv
       }
 
       try {
-        const res = await verifyTokenRequest(cookie.token);
+        const res = await verifyTokenRequest();
 
         if (!res.data) {
           setIsAuthenticated(false);

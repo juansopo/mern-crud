@@ -41,7 +41,7 @@ export const SocioProvider: React.FC<SocioProviderProps> = ({
   const [socios, setSocios] = useState<Socio[]>([]);
   const [error, setError] = useState<string[]>([]);
 
-  const createSocio = async (socio: any) => {
+  const createSocio = async (socio: Socio) => {
     try {
       const res = await createSocioRequest(socio);
       console.log(res);
