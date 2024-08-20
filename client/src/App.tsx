@@ -6,6 +6,8 @@ import HomePage from "./pages/HomePage";
 import SocioFormPage from "./pages/SocioFormPage";
 import { AuthProvider } from "./context/AuthContext";
 import ProfilePage from "./pages/ProfilePage";
+import GastosPage from "./pages/GastosPage";
+import IngresosPage from "./pages/IngresosPage";
 import ProtectedRoute from "./ProtectedRoute";
 import { SocioProvider } from "./context/SocioContext";
 import Sidebar from "./components/Sidebar";
@@ -80,6 +82,8 @@ function App() {
                 <Route path="/add-socio" element={<SocioFormPage />} />
                 <Route path="/socios/:id" element={<SocioFormPage />} />
                 <Route path="/profile" element={<ProfilePage />} />
+                <Route path="/gastos" element={<GastosPage />} />
+                <Route path="/ingresos" element={<IngresosPage />} />
               </Route>
             </Routes>
 

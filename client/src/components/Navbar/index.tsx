@@ -20,6 +20,12 @@ function Navbar() {
                 ):(
                     <>
                     <button className="bg-zinc-300 rounded-lg p-2 text-zinc-700">
+                        <Link to='/gastos' >Gastos</Link>
+                    </button>
+                    <button className="bg-zinc-300 rounded-lg p-2 text-zinc-700">
+                        <Link to='/ingresos' >Ingresos</Link>
+                    </button>
+                    <button className="bg-zinc-300 rounded-lg p-2 text-zinc-700">
                         <Link to='/profile'>Perfil</Link>
                     </button>
                     <button className="bg-zinc-300 rounded-lg p-2 text-zinc-700">

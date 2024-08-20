@@ -1,0 +1,11 @@
+.button-menu {
+    display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
+    gap: 20px; /* Espaciado entre botones */
+  }
+  
+  button {
+    font-size: 16px;
+    cursor: pointer;
+  }
+  

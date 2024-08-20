@@ -2,7 +2,7 @@ import React from "react"
 
 function HomePage(){
     return(
-        <div>Home Page</div>
+        <div>Sos un crack max uWu</div>
     )
 }
 
