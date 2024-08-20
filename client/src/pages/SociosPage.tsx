@@ -1,8 +1,14 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 
+
+export const Socios = () =>{
+  return <h1 >SOPO DEVELOPER</h1>
+}
+
+
 //import { useReactTable, getCoreRowModel, flexRender } from '@tanstack/react-table'
-import MUIDataTable, { MUIDataTableOptions } from "mui-datatables";
+/*import MUIDataTable, { MUIDataTableOptions } from "mui-datatables";
 import "../input.css";
 import { ThemeProvider } from "@mui/material";
 import { useSocio } from "../context/SocioContext";
@@ -43,4 +49,4 @@ export const TableJson = () => {
       />
     </ThemeProvider>
   );
-};
+};*/

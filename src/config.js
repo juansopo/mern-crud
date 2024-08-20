@@ -1,1 +1,1 @@
-export const TOKEN_SECRET = 'clave_secreta'
+export const TOKEN_SECRET = 'sopocoding'

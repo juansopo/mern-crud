@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom";
 import { FaRegUserCircle } from "react-icons/fa";
 import { SideBarButtonProps, SideBarProps } from "./types";
 import { FaArrowRight } from "react-icons/fa6";
+import { useAuth } from "../../context/AuthContext";
+
 
 const sidebarStyle = "w-64 h-screen bg-[#1c1917] flex flex-col pl-4";
 const logoStyle = "w-8 h-8 mt-4";
@@ -71,8 +73,14 @@ const RecursiveSubOptions: React.FC<SideBarButtonProps> = ({
   </div>
 );
 
-const SideBar: React.FC<SideBarProps> = ({ options }) => {
+const SideBar: React.FC<SideBarProps> = ({ options}) => {
   const [activeOptions, setActiveOptions] = React.useState<string[]>([]);
+
+  const {isAuthenticated} = useAuth();
+  
+  if (!isAuthenticated) {
+    return <h1>Simple Sidebar </h1>;
+  }
 
   const handleClick = (option: string) => {
     const optionIndex = activeOptions.indexOf(option);
@@ -92,25 +100,29 @@ const SideBar: React.FC<SideBarProps> = ({ options }) => {
     }
   };
 
+  
+
   return (
     <div className={sidebarStyle}>
-      <FaRegUserCircle className={logoStyle} />
-      {options.map((option) => (
-        <SideBarButton
-          key={option.title}
-          option={option}
-          isActive={activeOptions.includes(option.title)}
-          icon={option.icon}
-          onClick={() => handleClick(option.title)}
-        >
-          <RecursiveSubOptions
+      <FaRegUserCircle className={logoStyle} onClick = {() => handleClick("logo")} />
+        {options.map((option) => (
+          <SideBarButton
+            key={option.title}
             option={option}
             isActive={activeOptions.includes(option.title)}
-          />
-        </SideBarButton>
-      ))}
+            icon={option.icon}
+            onClick={() => handleClick(option.title)}
+          >
+            <RecursiveSubOptions
+              option={option}
+              isActive={activeOptions.includes(option.title)}
+            />
+          </SideBarButton>
+        ))}
     </div>
   );
+ 
+  
 };
 
 export default SideBar;
