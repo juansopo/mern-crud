@@ -9,7 +9,11 @@ export const LoginForm: React.FC<LoginFormProps> = ({register, onsubmit, errors,
     <div className="flex justify-center">
       
       <form className="form" onSubmit={onsubmit}>
-      
+        {signinError.map((error, i) => (
+          <div className="flex justify-center items-center" key={i}>
+            <p className="text-red-500 ">{error}</p>
+          </div>
+        ))}
         <div className="flex-column">
           <label>Email</label>
         </div>
